@@ -1,0 +1,31 @@
+{
+    "name": "DataItems",
+    "description": "The best project ever.",
+    "version": "1.0.0",
+    "homepage": "https://github.com/shenlan/DataItems",
+    "author": {
+        "name": "glli",
+        "email": ""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/shenlan/DataItems.git"
+    },
+    "bugs": {
+        "url": "https://github.com/shenlan/DataItems/issues"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/shenlan/DataItems/blob/master/LICENSE-MIT"
+        }
+    ],
+    "main": "lib/DataItems",
+    "engines": {
+        "node": ">= 0.10.0"
+    },
+    "scripts": {},
+    "devDependencies": {},
+    "keywords": [],
+    "dependencies": {}
+}
