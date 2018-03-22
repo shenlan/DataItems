@@ -30,6 +30,9 @@ var Hooks = {
     },
     "resetAll": function(){
         this.resetAll();
+    },
+    "setHidden": function(data, guid){
+        this.setHidden(data, guid);
     }
 };
 

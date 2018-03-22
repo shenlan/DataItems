@@ -3,6 +3,7 @@
  * Author: guilin.li
  * Time: 2015-04-27 20:00:13
  */
+var JSON = require('./json2');
 var JClass = require('./JClass');
 var Control = require('./control');
 var DataItem = JClass.create();

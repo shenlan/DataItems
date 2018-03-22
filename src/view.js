@@ -85,6 +85,8 @@ View.fn.update = function(view, name, val, isShow){
 
     if(name == "index") val += 1;
 
+    val = JSON.stringify(val);
+
     if(isShow == true){
         that.replaceWith(dom, val);
     }else{
@@ -120,7 +122,7 @@ View.fn.replaceWith = function(dom, val){
 
         switch (tagName){
             case "input":
-                if(/(text|password)/gi.test(this.type)){
+                if(/(text|password|hidden)/gi.test(this.type)){
                     txt = val;
                     break;
                 }else if(/(radio|checkbox)/gi.test(this.type)){

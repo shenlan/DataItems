@@ -196,6 +196,17 @@ Controller.fn.resetAll = function(){
         that.run('view.reset', i, model.toJson());
     });
 };
+//点击设置隐藏域的值，json格式的复杂数据
+Controller.fn.setHidden = function(data, guid){
+    var temp,
+        cfg = this.run('config'),
+        idx = this.getIndexByGuid(guid),
+        model = this.run('data.getByIndex', idx);
+
+    temp  = model.toJson() || {};
+
+    cfg.beforeSetHidden && cfg.beforeSetHidden(temp[data.name], guid);
+};
 //获取所有的数据对象
 Controller.fn.getAllItems = function(){
     return this.run('data.getAll');
@@ -262,6 +273,12 @@ Controller.fn.bindTogether = function(){
         }
             
         temp[name] = val;
+
+        try{
+            temp[name] = JSON.parse(val);
+        }catch(e){
+            temp[name] = val;
+        }
 
         that.run('data.update', index, temp);
     });

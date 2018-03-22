@@ -20,6 +20,7 @@
 				<th>类型</th>
 				<th>类型</th>
 				<th>其他</th>
+				<th>配置</th>
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -51,11 +52,15 @@
 				<label><input type="radio" name="userSex{{guid}}" data-dbind="userSex" value="2" /> 女</label>
 			</td>
 			<td>
-				<label><label><input type="checkbox" data-dbind="need" value="A" /> A</label>
+				<label><input type="checkbox" data-dbind="need" value="A" /> A</label>
 				<label><input type="checkbox" data-dbind="need" value="B" /> B</label>
 				<label><input type="checkbox" data-dbind="need" value="C" /> C</label>
 			</td>
 			<td>
+				<input type="hidden" data-dbind="options" value="{}" />
+			</td>
+			<td>
+				<a href="javascript:;" data-ebind="setHidden" data-name="options">配置</a>
 				<a href="javascript:;" data-ebind="edit">修改</a>
 				<a href="javascript:;" data-ebind="save">保存</a>
 				<a href="javascript:;"  data-ebind="remove">删除</a>
@@ -84,7 +89,7 @@
 		</tr>
 	</script>
 	<script src="http://qunarzz.com/jquery/prd/jquery-1.8.3.js"></script>
-	<script src="http://qunarzz.com/fekit_modules/dataitems/prd/index@dev.js"></script>
+	<script src="./index.js"></script>
 	<script>
 	var tmpl = $('#J_PassengerItem').html();
 
@@ -104,14 +109,18 @@
 		},
 		beforeSave: function(data){
 			console.log(this);
-		}
-	}
+		},
+		beforeSetHidden: function(data, guid) {
+			alert(JSON.stringify(data));
+            passenger.update(guid, {username: 1, userSex: 2, options: [{"b": 1}]});
+    	}
+	};
 
 	var passenger = new DataItems(config);
 
 	passenger.show({id: 123,username: 111, need: ['A','B'], userSex: 2});
 	passenger.add();
-    passenger.add({id: 124,username: 222, need: ['A','B'], userSex: 2});
+    passenger.add({id: 124,username: 222, need: ['A','B'], userSex: 2, options: [{"a": 1}] });
 
 	//passenger.update(items[0].guid, {username: 1, userSex: 2});
 	passenger.add({id: 125,username: 333, need: ['A'], userSex: 2});
