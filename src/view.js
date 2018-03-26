@@ -85,7 +85,9 @@ View.fn.update = function(view, name, val, isShow){
 
     if(name == "index") val += 1;
 
-    val = JSON.stringify(val);
+    if($.isPlainObject(val)){
+        val = JSON.stringify(val);
+    }
 
     if(isShow == true){
         that.replaceWith(dom, val);
